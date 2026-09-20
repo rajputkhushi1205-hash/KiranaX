@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: kirana-api
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: :memory:
+      - key: CORS_ORIGIN
+        value: '*'
